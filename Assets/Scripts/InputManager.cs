@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
             a.SetInteger("Veritical",0);
             a.SetInteger("Hori",1);
             man.transform.rotation = Quaternion.Euler(0, 0, 0);
-            endPos = new Vector3(2f, 5f, 100f);
+            endPos = new Vector3(2f, 5f, 0f);
             tweener.AddTween(man.transform, man.transform.position, endPos, 2);
             Step = 1;
         }
@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour
         {
             a.SetInteger("Hori",0);
             a.SetInteger("Veritical",-1);
-            endPos = new Vector3(2f, 0.9f, 100f);
+            endPos = new Vector3(2f, 0.9f, 0f);
             tweener.AddTween(man.transform, man.transform.position, endPos, 2);
             Step = 2;   
         }
@@ -44,7 +44,7 @@ public class InputManager : MonoBehaviour
         {
             a.SetInteger("Veritical",0);
             a.SetInteger("Hori",-1);
-            endPos = new Vector3(-3f, 0.9f, 100f);
+            endPos = new Vector3(-3f, 0.9f, 0f);
             tweener.AddTween(man.transform, man.transform.position, endPos, 2);
             Step = 3;         
         }
@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour
         {
             a.SetInteger("Hori",0);
             a.SetInteger("Veritical",1);
-            endPos = new Vector3(-3f, 5f, 100f);
+            endPos = new Vector3(-3f, 5f, 0f);
             tweener.AddTween(man.transform, man.transform.position, endPos, 2);
             Step = 0;       
         }
