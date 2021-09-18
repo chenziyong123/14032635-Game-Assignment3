@@ -52,31 +52,31 @@ public class LevelGenerator : MonoBehaviour
             //Through the horizontal and vertical (x, y) data in the levelmap, put down the corresponding walls picture
                 switch (levelMap[y, x]){ 
                 case 1:
-                wallsid=levelMap[y, x]-1;
+                wallsid=levelMap[y, x];
                     Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                 break;
                 case 2:
-                wallsid=levelMap[y, x]-1;
+                wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                 break;
                 case 3:
-                wallsid=levelMap[y, x]-1;
+                wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                 break;
                 case 4:
-                wallsid=levelMap[y, x]-1;
+                wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                 break;
                 case 5:
-                wallsid=levelMap[y, x]-1;
+                wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                 break;
                 case 6:
-                wallsid=levelMap[y, x]-1;
+                wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                 break;
                 case 7:
-                wallsid=levelMap[y, x]-1;
+                wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                 break;
                 default:
