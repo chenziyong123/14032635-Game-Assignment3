@@ -134,7 +134,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Green back
+  m_Name: Green up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -213,7 +213,7 @@ AnimatorStateMachine:
     m_Position: {x: 580, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -966654845543313457}
-    m_Position: {x: 615, y: 335, z: 0}
+    m_Position: {x: 620, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 835731086740367947}
     m_Position: {x: 650, y: 400, z: 0}
@@ -268,7 +268,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FearGreen back
+  m_Name: FearGreen up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -465,7 +465,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FearGreen head
+  m_Name: FearGreen down
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

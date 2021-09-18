@@ -86,7 +86,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: red back
+  m_Name: red up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -184,7 +184,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: halffearred back
+  m_Name: halffearred up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -229,7 +229,7 @@ AnimatorStateMachine:
     m_Position: {x: 1010, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2304098447808046569}
-    m_Position: {x: 375, y: 325, z: 0}
+    m_Position: {x: 380, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2364778136243690049}
     m_Position: {x: 410, y: 390, z: 0}
@@ -360,7 +360,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: halffearred head
+  m_Name: halffearred down
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -413,7 +413,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fearred head
+  m_Name: Fearred down
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

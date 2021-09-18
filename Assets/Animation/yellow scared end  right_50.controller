@@ -34,7 +34,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: halffearyellow head
+  m_Name: halffearyellow down
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -178,7 +178,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fearyellow head
+  m_Name: Fearyellow down
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -226,7 +226,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: halffearyellow back
+  m_Name: halffearyellow up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -252,7 +252,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: yellow back
+  m_Name: yellow up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -513,7 +513,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Yellow head
+  m_Name: Yellow down
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
