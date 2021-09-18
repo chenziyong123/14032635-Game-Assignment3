@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        endPos = new Vector3(-3f, 4.8f, 100f);
+        endPos = new Vector3(-3f, 4.8f, 0f);
         tweener = GetComponent<Tweener>();
         tweener.AddTween(man.transform, endPos, endPos, 2);
         man.GetComponent<Animator>();   
