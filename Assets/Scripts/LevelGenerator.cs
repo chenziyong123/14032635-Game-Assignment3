@@ -13,10 +13,10 @@ public class LevelGenerator : MonoBehaviour
     //Data of four maps (initial x-axis, initial y-axis, x-axis creation direction, y-axis creation direction, map id)
     void Start()
     {
-        CreateMap(-4, -6, 1, 1, 0);
-        CreateMap(-23, -6, -1, 1, 1);
-        CreateMap(-4, -22, 1, -1, 2);
-        CreateMap(-23, -22, -1, -1, 3);
+        CreateMap(-3.5f, -5.5f, 1, 1, 0);
+        CreateMap(-23.5f, -5.5f, -1, 1, 1);
+        CreateMap(-3.5f, -22.5f, 1, -1, 2);
+        CreateMap(-23.5f, -22.5f, -1, -1, 3);
     }
 
     // Update is called once per frame
