@@ -91,6 +91,7 @@ public class LevelGenerator : MonoBehaviour
     //Initial position (originx, originy) + levelmap (very vertical position x, y), multiplied by the icon creation direction (left to right = 1, right to left = -1, first determine whether the size of the wall is 1)
     //Pass value to rotate
     private void Movemap(int wallsid,int x,int y,float originalX,float originalY,int Xdirection,int Ydirection,int id){
+                     
          Wall = (GameObject)Instantiate(transArray[wallsid], transform);
                     positionX = (originalX + x)  * Xdirection;
                     positionY = (originalY + y)  * -Ydirection;
@@ -103,19 +104,19 @@ public class LevelGenerator : MonoBehaviour
     private void rotate(GameObject Wall, int x, int y, int id){
          int[,] rotateMap =
         {
-        {0,3,3,3,3,3,3,3,3,3,3,3,3,3},
+        {0,1,1,1,1,1,1,1,1,1,1,1,1,3},
         {0,5,5,5,5,5,5,5,5,5,5,5,5,0},
-        {0,5,0,3,3,3,5,0,3,3,3,3,5,0},
+        {0,5,0,1,1,3,5,0,1,1,1,3,5,0},
         {0,5,0,0,0,2,5,0,0,0,0,2,5,0},
         {0,5,1,1,1,2,5,1,1,1,1,2,5,1},
         {0,5,5,5,5,5,5,5,5,5,5,5,5,5},
-        {0,5,0,3,3,3,5,0,3,5,0,3,3,3},
+        {0,5,0,1,1,3,5,0,3,5,0,1,1,1},
         {0,5,1,1,1,2,5,0,2,5,1,1,1,3},
         {0,5,5,5,5,5,5,0,2,5,5,5,5,5},
-        {1,1,1,1,1,3,5,0,1,3,3,3,0,0},
+        {1,1,1,1,1,3,5,0,1,1,1,3,0,0},
         {0,0,0,0,0,2,5,0,0,1,1,2,0,1},
         {0,0,0,0,0,2,5,0,2,0,0,0,0,0},
-        {0,0,0,0,0,2,5,0,2,0,0,3,3,0},
+        {0,0,0,0,0,2,5,0,2,0,0,1,1,0},
         {1,1,1,1,1,2,5,1,2,0,0,0,0,0},
         {0,0,0,0,0,0,5,0,0,0,0,0,0,0},
         };
@@ -127,16 +128,16 @@ public class LevelGenerator : MonoBehaviour
         switch (rotateMap[x, y])
         {
             case 0:
-             Wall.transform.Rotate(0f, 0f, 0f);
+             Wall.transform.Rotate(0, 0, 0);
              break;
              case 1:
-             Wall.transform.Rotate(0f, 0f, 90f);
+             Wall.transform.Rotate(0, 0, 90);
              break;
               case 2:
-             Wall.transform.Rotate(0f, 0f, 180f);
+             Wall.transform.Rotate(0, 0, 180);
              break;
             case 3:
-             Wall.transform.Rotate(0f, 0f, 270f);
+             Wall.transform.Rotate(0, 0, 270);
              break; 
             default:
             break;
@@ -147,16 +148,16 @@ public class LevelGenerator : MonoBehaviour
         switch (rotateMap[x, y])
         {
             case 0:
-             Wall.transform.Rotate(0f, 180f, 0f);
+             Wall.transform.Rotate(0, 180, 0);
              break;
              case 1:
-             Wall.transform.Rotate(0f, 180f, 90f);
+             Wall.transform.Rotate(0, 180, 90);
              break;
               case 2:
-             Wall.transform.Rotate(0f, 180f, 180f);
+             Wall.transform.Rotate(0, 180, 180);
              break;
             case 3:
-            Wall.transform.Rotate(0f, 180f, 270f);
+            Wall.transform.Rotate(0, 180, 270);
              break; 
             default:
             break;
@@ -167,19 +168,19 @@ public class LevelGenerator : MonoBehaviour
         switch (rotateMap[x, y])
         {
              case 0:
-             Wall.transform.Rotate(180f, 0f, 0f);
+             Wall.transform.Rotate(180, 0, 0);
              break;
             case 1:
-             Wall.transform.Rotate(180f, 0f, 90f);
+             Wall.transform.Rotate(180, 0, 90);
              break;
               case 2:
-             Wall.transform.Rotate(180f, 0f,180f);
+             Wall.transform.Rotate(180, 0,180);
              break;
             case 3:
-             Wall.transform.Rotate(180f, 0f, 270f);
+             Wall.transform.Rotate(180, 0, 270);
              break;
               case 5:
-             Wall.transform.Rotate(180f, 180f,180f);
+             Wall.transform.Rotate(180, 180, 180);
              break;
             default:
             break;
@@ -190,19 +191,19 @@ public class LevelGenerator : MonoBehaviour
         switch (rotateMap[x, y])
         {
              case 0:
-            Wall.transform.Rotate(180f, 180f, 0f);
+            Wall.transform.Rotate(180, 180, 0);
              break;
              case 1:
-             Wall.transform.Rotate(180f, 180f, 90f);
+             Wall.transform.Rotate(180, 180, 90);
              break;
               case 2:
-             Wall.transform.Rotate(180f, 180f,180f);
+             Wall.transform.Rotate(180, 180, 180);
              break;
             case 3:
-            Wall.transform.Rotate(180f, 180f, 270f);
+            Wall.transform.Rotate(180, 180, 270);
              break; 
              case 5:
-            Wall.transform.Rotate(180f, 180f, 180f);
+            Wall.transform.Rotate(180, 180, 180);
              break; 
             default:
             break;

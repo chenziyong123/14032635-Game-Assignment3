@@ -6,7 +6,6 @@ public class InputManager : MonoBehaviour
 {
     public GameObject man;
     private Tweener tweener;
-    private int Step = 0;
     public Animator a;
     public AudioSource WalkAudio;
 
