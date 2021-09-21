@@ -6,16 +6,15 @@ public class InputManager : MonoBehaviour
 {
     public GameObject man;
     private Tweener tweener;
-    private Vector3 endPos;
     private int Step = 0;
     public Animator a;
+    public AudioSource WalkAudio;
 
     // Start is called before the first frame update
     void Start()
     {
-        endPos = new Vector3(-2.5f, 4.5f, 0f);
         tweener = GetComponent<Tweener>();
-        tweener.AddTween(man.transform, endPos, endPos, 3);
+        tweener.AddTween(man.transform, new Vector3(-2.5f, 4.5f, 0f),new Vector3(-2.5f, 4.5f, 0f), 3f);
         man.GetComponent<Animator>();   
     }
 
@@ -23,38 +22,40 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         // man move and change animation
-        if (man.transform.position == endPos && Step == 0)
+        if (man.transform.position == new Vector3(-2.5f, 4.5f, 0f))
         {
             a.SetInteger("Veritical",0);
             a.SetInteger("Hori",1);
-            man.transform.rotation = Quaternion.Euler(0, 0, 0);
-            endPos = new Vector3(2.5f, 4.5f, 0f);
-            tweener.AddTween(man.transform, man.transform.position, endPos, 3);
-            Step = 1;
+            tweener.AddTween(man.transform, man.transform.position, new Vector3(2.5f, 4.5f, 0f), 3f);
+           WalkAudio.Play();
+           WalkAudio.loop = true;
         }
-        else if (man.transform.position == endPos && Step == 1)
+        
+         if (man.transform.position == new Vector3(2.5f, 4.5f, 0f) )
         {
             a.SetInteger("Hori",0);
             a.SetInteger("Veritical",-1);
-            endPos = new Vector3(2.5f, 0.5f, 0f);
-            tweener.AddTween(man.transform, man.transform.position, endPos, 3);
-            Step = 2;   
+            tweener.AddTween(man.transform, man.transform.position, new Vector3(2.5f, 0.5f, 0f), 3f);
+            WalkAudio.Play();  
+            WalkAudio.loop = true;
         }
-        else if (man.transform.position == endPos && Step == 2)
+        
+        if (man.transform.position == new Vector3(2.5f, 0.5f, 0f))
         {
             a.SetInteger("Veritical",0);
             a.SetInteger("Hori",-1);
-            endPos = new Vector3(-2.5f, 0.5f, 0f);
-            tweener.AddTween(man.transform, man.transform.position, endPos, 3);
-            Step = 3;         
+            tweener.AddTween(man.transform, man.transform.position, new Vector3(-2.5f, 0.5f, 0f), 3f);
+            WalkAudio.Play();   
+            WalkAudio.loop = true;
         }
-        else if (man.transform.position == endPos && Step == 3)
+        
+         if (man.transform.position == new Vector3(-2.5f, 0.5f, 0f) )
         {
             a.SetInteger("Hori",0);
             a.SetInteger("Veritical",1);
-            endPos = new Vector3(-2.5f, 4.5f, 0f);
-            tweener.AddTween(man.transform, man.transform.position, endPos, 3);
-            Step = 0;       
+            tweener.AddTween(man.transform, man.transform.position, new Vector3(-2.5f, 4.5f, 0f), 3f);
+            WalkAudio.Play();  
+            WalkAudio.loop = true;   
         }
     }
 }

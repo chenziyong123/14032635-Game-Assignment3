@@ -9,10 +9,12 @@ public class LevelGenerator : MonoBehaviour
     public float positionX;
     public float positionY;
     private int wallsid = 0;
+    public GameObject level01;
     // Start is called before the first frame update
     //Data of four maps (initial x-axis, initial y-axis, x-axis creation direction, y-axis creation direction, map id)
     void Start()
     {
+        level01.SetActive(false);
         CreateMap(-3.5f, -5.5f, 1, 1, 0);
         CreateMap(-23.5f, -5.5f, -1, 1, 1);
         CreateMap(-3.5f, -22.5f, 1, -1, 2);
@@ -131,7 +133,7 @@ public class LevelGenerator : MonoBehaviour
              Wall.transform.Rotate(0f, 0f, 90f);
              break;
               case 2:
-            Wall.transform.Rotate(0f, 0f, 180f);
+             Wall.transform.Rotate(0f, 0f, 180f);
              break;
             case 3:
              Wall.transform.Rotate(0f, 0f, 270f);
