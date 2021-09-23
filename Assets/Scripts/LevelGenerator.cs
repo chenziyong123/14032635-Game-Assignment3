@@ -17,8 +17,8 @@ public class LevelGenerator : MonoBehaviour
         level01.SetActive(false);
         CreateMap(-3.5f, -5.5f, 1, 1, 0);
         CreateMap(-23.5f, -5.5f, -1, 1, 1);
-        CreateMap(-3.5f, -22.5f, 1, -1, 2);
-        CreateMap(-23.5f, -22.5f, -1, -1, 3);
+        CreateMap(-3.5f, -21.5f, 1, -1, 2);
+        CreateMap(-23.5f, -21.5f, -1, -1, 3);
     }
 
     // Update is called once per frame
@@ -46,7 +46,6 @@ public class LevelGenerator : MonoBehaviour
             {0,0,0,0,0,2,5,4,4,0,0,0,0,0},
             {0,0,0,0,0,2,5,4,4,0,3,4,4,0},
             {2,2,2,2,2,1,5,3,3,0,4,0,0,0},
-            {0,0,0,0,0,0,5,0,0,0,4,0,0,0},
         };
 //By traversing the horizontal and vertical of the icon
         for (int y = 0; y < levelMap.GetLength(0); y++){
@@ -118,7 +117,6 @@ public class LevelGenerator : MonoBehaviour
         {0,0,0,0,0,2,5,0,2,0,0,0,0,0},
         {0,0,0,0,0,2,5,0,2,0,0,1,1,0},
         {1,1,1,1,1,2,5,1,2,0,0,0,0,0},
-        {0,0,0,0,0,0,5,0,0,0,0,0,0,0},
         };
 
 //Confirm by id the figure is the upper left corner (1), upper right corner (2), lower left corner (3), lower right corner (4)
