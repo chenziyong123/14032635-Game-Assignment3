@@ -20,7 +20,6 @@ public class LevelGenerator : MonoBehaviour
         CreateMap(-3.5f, -21.5f, 1, -1, 2);
         CreateMap(-23.5f, -21.5f, -1, -1, 3);
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -32,7 +31,7 @@ public class LevelGenerator : MonoBehaviour
         
         int[,] levelMap =
         {
-            {1,2,2,2,2,2,2,2,2,2,2,2,2,7},
+        {1,2,2,2,2,2,2,2,2,2,2,2,2,7},
             {2,5,5,5,5,5,5,5,5,5,5,5,5,4},
             {2,5,3,4,4,3,5,3,4,4,4,3,5,4},
             {2,6,4,0,0,4,5,4,0,0,0,4,5,4},
@@ -63,12 +62,12 @@ public class LevelGenerator : MonoBehaviour
                 wallsid=levelMap[y, x];
                     Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
 
-                     if (y>0 && x+1 > 0 && y+1 <=  levelMap.GetLength(0) && x+1 <= levelMap.GetLength(1))
+                       if (y>0 && x+1 > 0 && y+1 <=  levelMap.GetLength(0) && x+1 <= levelMap.GetLength(1))
                     { 
-                     if (levelMap[y-1, x]==2 && levelMap[y, x+1]==2 )
+                     if (levelMap[y-1, x]==2 && levelMap[y, x+1]==2 || levelMap[y-1, x]==7 && levelMap[y, x+1]==2)
                          {
                          Wall.transform.Rotate(0, 0, 90);
-                         }else if (levelMap[y-1, x]==2 && levelMap[y, x-1]==2)
+                         }else if (levelMap[y-1, x]==2 && levelMap[y, x-1]==2 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
                         }else if (levelMap[y+1, x]==2 && levelMap[y, x-1]==2)
@@ -88,7 +87,7 @@ public class LevelGenerator : MonoBehaviour
                      {
                          Wall.transform.Rotate(0, 0, 90);
                      }else if(x>0 && x< 13) {
-                            if (levelMap[y, x-1]==2 || levelMap[y,x+1]==2)
+                            if (levelMap[y, x-1]==2 || levelMap[y,x+1]==2 || levelMap[y,x-1]==7 || levelMap[y,x+1]==7)
                          {
                          Wall.transform.Rotate(0, 0, 90);
                          }
@@ -110,7 +109,7 @@ public class LevelGenerator : MonoBehaviour
                          }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 && levelMap[y+1, x]!=4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
-                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3  )
+                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 270);
                         }
@@ -122,13 +121,13 @@ public class LevelGenerator : MonoBehaviour
                         if(levelMap[y-1, x]==3 && levelMap[y, x+1]==4 && levelMap[y, x-1]==4){
                         Wall.transform.Rotate(0, 0, 0);    
                         }
-                         else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==4 || levelMap[y-1, x]==3 && levelMap[y, x+1]==4  || levelMap[y-1, x]==4 && levelMap[y, x+1]==3 )
+                         else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==4 || levelMap[y-1, x]==3 && levelMap[y, x+1]==4  || levelMap[y-1, x]==4 && levelMap[y, x+1]==3 || levelMap[y-1, x]==3 && levelMap[y, x+1]==3)
                          {
                          Wall.transform.Rotate(0, 0, 90);
-                         }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 )
+                         }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 || levelMap[y-1, x]==3 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
-                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3  )
+                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3 || levelMap[y+1, x]==3 && levelMap[y, x-1]==3 ||  levelMap[y+1, x]==7 && levelMap[y, x-1]==4 )
                         {
                         Wall.transform.Rotate(0, 0, 270);
                         }
@@ -139,19 +138,23 @@ public class LevelGenerator : MonoBehaviour
                 case 4:
                 wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
-                     
-                       
-                    if (x==levelMap.GetLength(1)-1 && levelMap[y,x-1]==4 )
+
+                      if(y<0){
+                           if(levelMap[y,x+1]==0 && levelMap[y-1,x]==4||levelMap[y,x+1]==0 && levelMap[y+1,x]==3){
+                                 Wall.transform.Rotate(0, 0, 0);
+                           }
+                       }
+                    if (x==13 && levelMap[y,x-1]==4 )
                      {
                          Wall.transform.Rotate(0, 0, 90);
-                     }else if(x>0 && x< levelMap.GetLength(1)-1) {
-                         if (levelMap[y, x-1]==5||levelMap[y,x+1]==5 || levelMap[y, x-1]==0||levelMap[y,x+1]==0 && levelMap[y+1,x]==4||levelMap[y,x+1]==0 && levelMap[y-1,x]==4)
+                     }else if(x>0 && x< levelMap.GetLength(1)-1&& y<levelMap.GetLength(0)-1 ) {
+                         if (levelMap[y, x-1]==5||levelMap[y,x+1]==5 || levelMap[y, x-1]==0||levelMap[y,x+1]==0 && levelMap[y+1,x]==4)
                        {
                             Wall.transform.Rotate(0, 0, 0);
                        
-                       }else if (levelMap[y, x-1]==4 || levelMap[y,x+1]==4 || levelMap[y,x+1]==3|| levelMap[y,x+1]==3)
+                       }else if (levelMap[y, x-1]==4 && levelMap[y,x+1]!=0 || levelMap[y, x-1]==4 && levelMap[y-1, x]==0 || levelMap[y,x+1]==4 || levelMap[y,x+1]==3 && levelMap[y,x+1]==3 || levelMap[y,x+1]==7 && levelMap[y,x+1]==4 || levelMap[y,x+1]==4 && levelMap[y,x+1]==7)
                          {
-                         Wall.transform.Rotate(0, 0, 90);
+                         Wall.transform.Rotate(0,0, 90);
                          }
                         }
                 break;
@@ -168,16 +171,16 @@ public class LevelGenerator : MonoBehaviour
                 wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
 
-                     if(y < levelMap.GetLength(0) && x < levelMap.GetLength(1)){
-                     if (levelMap[y+1, x]==4)
+                  if(y < levelMap.GetLength(0) && x < levelMap.GetLength(1)){
+                     if (levelMap[y+1, x]==4 && levelMap[y, x-1]==2 )
                      {
                        Wall.transform.Rotate(0, 0, 270);  
-                     }else if (levelMap[y-1, x]==4)
+                     }else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==2 || levelMap[y-1, x]==3 && levelMap[y, x+1]==2)
                      {
                           Wall.transform.Rotate(0, 0, 90);
                      }
                      if(x<0 ){
-                         if (levelMap[y, x-1]==4)
+                         if (levelMap[y, x-1]==4 && levelMap[y+1, x]!=2 )
                      {
                           Wall.transform.Rotate(0, 0, 180);
                      }
@@ -198,14 +201,13 @@ public class LevelGenerator : MonoBehaviour
              case 1:
                 wallsid=levelMap[y, x];
                     Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
-
-                        Wall.transform.Rotate(0, 180, 0);
-                     if (y>0 && x+1 > 0 && y+1 <=  levelMap.GetLength(0) && x+1 <= levelMap.GetLength(1))
+                    Wall.transform.Rotate(0, 180, 0);
+                    if (y>0 && x+1 > 0 && y+1 <=  levelMap.GetLength(0) && x+1 <= levelMap.GetLength(1))
                     { 
-                     if (levelMap[y-1, x]==2 && levelMap[y, x+1]==2 )
+                     if (levelMap[y-1, x]==2 && levelMap[y, x+1]==2 || levelMap[y-1, x]==7 && levelMap[y, x+1]==2)
                          {
                          Wall.transform.Rotate(0, 0, 90);
-                         }else if (levelMap[y-1, x]==2 && levelMap[y, x-1]==2)
+                         }else if (levelMap[y-1, x]==2 && levelMap[y, x-1]==2 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
                         }else if (levelMap[y+1, x]==2 && levelMap[y, x-1]==2)
@@ -219,14 +221,13 @@ public class LevelGenerator : MonoBehaviour
                 case 2:
                 wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
-                      Wall.transform.Rotate(0, 180, 0);
-                     if (y == 0){
+                      if (y == 0){
                         Wall.transform.Rotate(0, 0, 90);
                      }else if (x-1 <0 && levelMap[y,x+1]==2 )
                      {
                          Wall.transform.Rotate(0, 0, 90);
                      }else if(x>0 && x< 13) {
-                            if (levelMap[y, x-1]==2 || levelMap[y,x+1]==2)
+                            if (levelMap[y, x-1]==2 || levelMap[y,x+1]==2 || levelMap[y,x-1]==7 || levelMap[y,x+1]==7)
                          {
                          Wall.transform.Rotate(0, 0, 90);
                          }
@@ -237,7 +238,7 @@ public class LevelGenerator : MonoBehaviour
                 wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                     Wall.transform.Rotate(0, 180, 0);
-                     if (x == levelMap.GetLength(1)-1)
+                      if (x == levelMap.GetLength(1)-1)
                     {
                         if(levelMap[y-1, x]==3 && levelMap[y, x+1]==4 && levelMap[y, x-1]==4){
                         Wall.transform.Rotate(0, 0, 0);    
@@ -248,7 +249,7 @@ public class LevelGenerator : MonoBehaviour
                          }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 && levelMap[y+1, x]!=4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
-                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3  )
+                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 270);
                         }
@@ -260,13 +261,13 @@ public class LevelGenerator : MonoBehaviour
                         if(levelMap[y-1, x]==3 && levelMap[y, x+1]==4 && levelMap[y, x-1]==4){
                         Wall.transform.Rotate(0, 0, 0);    
                         }
-                         else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==4 || levelMap[y-1, x]==3 && levelMap[y, x+1]==4  || levelMap[y-1, x]==4 && levelMap[y, x+1]==3 )
+                         else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==4 || levelMap[y-1, x]==3 && levelMap[y, x+1]==4  || levelMap[y-1, x]==4 && levelMap[y, x+1]==3 || levelMap[y-1, x]==3 && levelMap[y, x+1]==3)
                          {
                          Wall.transform.Rotate(0, 0, 90);
-                         }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 )
+                         }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 || levelMap[y-1, x]==3 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
-                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3  )
+                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3 || levelMap[y+1, x]==3 && levelMap[y, x-1]==3 ||  levelMap[y+1, x]==7 && levelMap[y, x-1]==4 )
                         {
                         Wall.transform.Rotate(0, 0, 270);
                         }
@@ -277,15 +278,20 @@ public class LevelGenerator : MonoBehaviour
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                       Wall.transform.Rotate(0, 180, 0);
                        
+                     if(y<0){
+                           if(levelMap[y,x+1]==0 && levelMap[y-1,x]==4||levelMap[y,x+1]==0 && levelMap[y+1,x]==3){
+                                 Wall.transform.Rotate(0, 0, 0);
+                           }
+                       }
                     if (x==13 && levelMap[y,x-1]==4 )
                      {
                          Wall.transform.Rotate(0, 0, 90);
-                     }else if(x>0 && x< levelMap.GetLength(1)-1&& y<levelMap.GetLength(0)-1) {
-                         if (levelMap[y, x-1]==5||levelMap[y,x+1]==5 || levelMap[y, x-1]==0||levelMap[y,x+1]==0 && levelMap[y+1,x]==4||levelMap[y,x+1]==0 && levelMap[y-1,x]==4)
+                     }else if(x>0 && x< levelMap.GetLength(1)-1&& y<levelMap.GetLength(0)-1 ) {
+                         if (levelMap[y, x-1]==5||levelMap[y,x+1]==5 || levelMap[y, x-1]==0||levelMap[y,x+1]==0 && levelMap[y+1,x]==4)
                        {
                             Wall.transform.Rotate(0, 0, 0);
                        
-                       }else if (levelMap[y, x-1]==4 || levelMap[y,x+1]==4)
+                       }else if (levelMap[y, x-1]==4 && levelMap[y,x+1]!=0 || levelMap[y, x-1]==4 && levelMap[y-1, x]==0 || levelMap[y,x+1]==4 || levelMap[y,x+1]==3 && levelMap[y,x+1]==3 || levelMap[y,x+1]==7 && levelMap[y,x+1]==4 || levelMap[y,x+1]==4 && levelMap[y,x+1]==7)
                          {
                          Wall.transform.Rotate(0,0, 90);
                          }
@@ -305,16 +311,16 @@ public class LevelGenerator : MonoBehaviour
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                       Wall.transform.Rotate(0, 180, 0);
                      
-                     if(y < levelMap.GetLength(0) && x < levelMap.GetLength(1)){
-                     if (levelMap[y+1, x]==4)
+                    if(y < levelMap.GetLength(0) && x < levelMap.GetLength(1)){
+                     if (levelMap[y+1, x]==4 && levelMap[y, x-1]==2 )
                      {
                        Wall.transform.Rotate(0, 0, 270);  
-                     }else if (levelMap[y-1, x]==4)
+                     }else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==2 || levelMap[y-1, x]==3 && levelMap[y, x+1]==2)
                      {
                           Wall.transform.Rotate(0, 0, 90);
                      }
                      if(x<0 ){
-                         if (levelMap[y, x-1]==4)
+                         if (levelMap[y, x-1]==4 && levelMap[y+1, x]!=2 )
                      {
                           Wall.transform.Rotate(0, 0, 180);
                      }
@@ -338,10 +344,10 @@ public class LevelGenerator : MonoBehaviour
                         Wall.transform.Rotate(180, 0, 0);
                      if (y>0 && x+1 > 0 && y+1 <=  levelMap.GetLength(0) && x+1 <= levelMap.GetLength(1))
                     { 
-                     if (levelMap[y-1, x]==2 && levelMap[y, x+1]==2 )
+                     if (levelMap[y-1, x]==2 && levelMap[y, x+1]==2 || levelMap[y-1, x]==7 && levelMap[y, x+1]==2)
                          {
                          Wall.transform.Rotate(0, 0, 90);
-                         }else if (levelMap[y-1, x]==2 && levelMap[y, x-1]==2)
+                         }else if (levelMap[y-1, x]==2 && levelMap[y, x-1]==2 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
                         }else if (levelMap[y+1, x]==2 && levelMap[y, x-1]==2)
@@ -362,18 +368,18 @@ public class LevelGenerator : MonoBehaviour
                      {
                          Wall.transform.Rotate(0, 0, 90);
                      }else if(x>0 && x< 13) {
-                            if (levelMap[y, x-1]==2 || levelMap[y,x+1]==2)
+                            if (levelMap[y, x-1]==2 || levelMap[y,x+1]==2 || levelMap[y,x-1]==7 || levelMap[y,x+1]==7)
                          {
                          Wall.transform.Rotate(0, 0, 90);
                          }
                         }
                 break;
-// check    
+// check  up down left right wall and not change rotate
                 case 3:
                 wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                     Wall.transform.Rotate(180, 0, 0);
-                     if (x == levelMap.GetLength(1)-1)
+                      if (x == levelMap.GetLength(1)-1)
                     {
                         if(levelMap[y-1, x]==3 && levelMap[y, x+1]==4 && levelMap[y, x-1]==4){
                         Wall.transform.Rotate(0, 0, 0);    
@@ -384,7 +390,7 @@ public class LevelGenerator : MonoBehaviour
                          }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 && levelMap[y+1, x]!=4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
-                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3  )
+                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 270);
                         }
@@ -396,33 +402,38 @@ public class LevelGenerator : MonoBehaviour
                         if(levelMap[y-1, x]==3 && levelMap[y, x+1]==4 && levelMap[y, x-1]==4){
                         Wall.transform.Rotate(0, 0, 0);    
                         }
-                         else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==4 || levelMap[y-1, x]==3 && levelMap[y, x+1]==4  || levelMap[y-1, x]==4 && levelMap[y, x+1]==3 )
+                         else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==4 || levelMap[y-1, x]==3 && levelMap[y, x+1]==4  || levelMap[y-1, x]==4 && levelMap[y, x+1]==3 || levelMap[y-1, x]==3 && levelMap[y, x+1]==3)
                          {
                          Wall.transform.Rotate(0, 0, 90);
-                         }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 )
+                         }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 || levelMap[y-1, x]==3 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
-                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3  )
+                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3 || levelMap[y+1, x]==3 && levelMap[y, x-1]==3 ||  levelMap[y+1, x]==7 && levelMap[y, x-1]==4 )
                         {
                         Wall.transform.Rotate(0, 0, 270);
                         }
                     }
-                    
                 break;
+                // check  up down left right wall and not change rotate and not rotate
                 case 4:
                 wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                       Wall.transform.Rotate(180, 0, 0);
                        
+                      if(y<0){
+                           if(levelMap[y,x+1]==0 && levelMap[y-1,x]==4||levelMap[y,x+1]==0 && levelMap[y+1,x]==3){
+                                 Wall.transform.Rotate(0, 0, 0);
+                           }
+                       }
                     if (x==13 && levelMap[y,x-1]==4 )
                      {
                          Wall.transform.Rotate(0, 0, 90);
-                     }else if(x>0 && x< levelMap.GetLength(1)-1) {
-                         if (levelMap[y, x-1]==5||levelMap[y,x+1]==5 || levelMap[y, x-1]==0||levelMap[y,x+1]==0 && levelMap[y+1,x]==4||levelMap[y,x+1]==0 && levelMap[y-1,x]==4)
+                     }else if(x>0 && x< levelMap.GetLength(1)-1&& y<levelMap.GetLength(0)-1 ) {
+                         if (levelMap[y, x-1]==5||levelMap[y,x+1]==5 || levelMap[y, x-1]==0||levelMap[y,x+1]==0 && levelMap[y+1,x]==4)
                        {
                             Wall.transform.Rotate(0, 0, 0);
                        
-                       }else if (levelMap[y, x-1]==4 || levelMap[y,x+1]==4)
+                       }else if (levelMap[y, x-1]==4 && levelMap[y,x+1]!=0 || levelMap[y, x-1]==4 && levelMap[y-1, x]==0 || levelMap[y,x+1]==4 || levelMap[y,x+1]==3 && levelMap[y,x+1]==3 || levelMap[y,x+1]==7 && levelMap[y,x+1]==4 || levelMap[y,x+1]==4 && levelMap[y,x+1]==7)
                          {
                          Wall.transform.Rotate(0,0, 90);
                          }
@@ -437,21 +448,21 @@ public class LevelGenerator : MonoBehaviour
                 wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                 break;
+               // rotate t check left , right ,up,down and rotate 
                 case 7:
                 wallsid=levelMap[y, x];
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                       Wall.transform.Rotate(180, 0, 0);
-                    
-                      if(y < levelMap.GetLength(0) && x < levelMap.GetLength(1)){
-                     if (levelMap[y+1, x]==4)
+                     if(y < levelMap.GetLength(0) && x < levelMap.GetLength(1)){
+                     if (levelMap[y+1, x]==4 && levelMap[y, x-1]==2 )
                      {
                        Wall.transform.Rotate(0, 0, 270);  
-                     }else if (levelMap[y-1, x]==4)
+                     }else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==2 || levelMap[y-1, x]==3 && levelMap[y, x+1]==2)
                      {
                           Wall.transform.Rotate(0, 0, 90);
                      }
                      if(x<0 ){
-                         if (levelMap[y, x-1]==4)
+                         if (levelMap[y, x-1]==4 && levelMap[y+1, x]!=2 )
                      {
                           Wall.transform.Rotate(0, 0, 180);
                      }
@@ -475,10 +486,10 @@ public class LevelGenerator : MonoBehaviour
                         Wall.transform.Rotate(180, 180, 0);
                      if (y>0 && x+1 > 0 && y+1 <=  levelMap.GetLength(0) && x+1 <= levelMap.GetLength(1))
                     { 
-                     if (levelMap[y-1, x]==2 && levelMap[y, x+1]==2 )
+                     if (levelMap[y-1, x]==2 && levelMap[y, x+1]==2 || levelMap[y-1, x]==7 && levelMap[y, x+1]==2)
                          {
                          Wall.transform.Rotate(0, 0, 90);
-                         }else if (levelMap[y-1, x]==2 && levelMap[y, x-1]==2)
+                         }else if (levelMap[y-1, x]==2 && levelMap[y, x-1]==2 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
                         }else if (levelMap[y+1, x]==2 && levelMap[y, x-1]==2)
@@ -499,7 +510,7 @@ public class LevelGenerator : MonoBehaviour
                      {
                          Wall.transform.Rotate(0, 0, 90);
                      }else if(x>0 && x< 13) {
-                            if (levelMap[y, x-1]==2 || levelMap[y,x+1]==2)
+                            if (levelMap[y, x-1]==2 || levelMap[y,x+1]==2 || levelMap[y,x-1]==7 || levelMap[y,x+1]==7)
                          {
                          Wall.transform.Rotate(0, 0, 90);
                          }
@@ -521,7 +532,7 @@ public class LevelGenerator : MonoBehaviour
                          }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 && levelMap[y+1, x]!=4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
-                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3  )
+                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 270);
                         }
@@ -533,13 +544,13 @@ public class LevelGenerator : MonoBehaviour
                         if(levelMap[y-1, x]==3 && levelMap[y, x+1]==4 && levelMap[y, x-1]==4){
                         Wall.transform.Rotate(0, 0, 0);    
                         }
-                         else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==4 || levelMap[y-1, x]==3 && levelMap[y, x+1]==4  || levelMap[y-1, x]==4 && levelMap[y, x+1]==3 )
+                         else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==4 || levelMap[y-1, x]==3 && levelMap[y, x+1]==4  || levelMap[y-1, x]==4 && levelMap[y, x+1]==3 || levelMap[y-1, x]==3 && levelMap[y, x+1]==3)
                          {
                          Wall.transform.Rotate(0, 0, 90);
-                         }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 )
+                         }else if (levelMap[y-1, x]==4 && levelMap[y, x-1]==4 || levelMap[y-1, x]==3 && levelMap[y, x-1]==4 || levelMap[y-1, x]==4 && levelMap[y, x-1]==3 || levelMap[y-1, x]==3 && levelMap[y, x-1]==3 )
                         {
                         Wall.transform.Rotate(0, 0, 180);
-                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3  )
+                        }else if (levelMap[y+1, x]==4 && levelMap[y, x-1]==4 || levelMap[y+1, x]==3 && levelMap[y, x-1]==4 || levelMap[y+1, x]==4 && levelMap[y, x-1]==3 || levelMap[y+1, x]==3 && levelMap[y, x-1]==3 ||  levelMap[y+1, x]==7 && levelMap[y, x-1]==4 )
                         {
                         Wall.transform.Rotate(0, 0, 270);
                         }
@@ -551,15 +562,20 @@ public class LevelGenerator : MonoBehaviour
                      Movemap(wallsid, x, y, originalX,originalY,Xdirection,Ydirection,id);
                       Wall.transform.Rotate(180, 180, 0);
                        
+                      if(y<0){
+                           if(levelMap[y,x+1]==0 && levelMap[y-1,x]==4||levelMap[y,x+1]==0 && levelMap[y+1,x]==3){
+                                 Wall.transform.Rotate(0, 0, 0);
+                           }
+                       }
                     if (x==13 && levelMap[y,x-1]==4 )
                      {
                          Wall.transform.Rotate(0, 0, 90);
-                     }else if(x>0 && x< levelMap.GetLength(1)-1) {
-                         if (levelMap[y, x-1]==5||levelMap[y,x+1]==5 || levelMap[y, x-1]==0||levelMap[y,x+1]==0 && levelMap[y+1,x]==4||levelMap[y,x+1]==0 && levelMap[y-1,x]==4)
+                     }else if(x>0 && x< levelMap.GetLength(1)-1&& y<levelMap.GetLength(0)-1 ) {
+                         if (levelMap[y, x-1]==5||levelMap[y,x+1]==5 || levelMap[y, x-1]==0||levelMap[y,x+1]==0 && levelMap[y+1,x]==4)
                        {
                             Wall.transform.Rotate(0, 0, 0);
                        
-                       }else if (levelMap[y, x-1]==4 || levelMap[y,x+1]==4)
+                       }else if (levelMap[y, x-1]==4 && levelMap[y,x+1]!=0 || levelMap[y, x-1]==4 && levelMap[y-1, x]==0 || levelMap[y,x+1]==4 || levelMap[y,x+1]==3 && levelMap[y,x+1]==3 || levelMap[y,x+1]==7 && levelMap[y,x+1]==4 || levelMap[y,x+1]==4 && levelMap[y,x+1]==7)
                          {
                          Wall.transform.Rotate(0,0, 90);
                          }
@@ -580,15 +596,15 @@ public class LevelGenerator : MonoBehaviour
                      Wall.transform.Rotate(180, 180, 0);
                    
                      if(y < levelMap.GetLength(0) && x < levelMap.GetLength(1)){
-                     if (levelMap[y+1, x]==4)
+                     if (levelMap[y+1, x]==4 && levelMap[y, x-1]==2 )
                      {
                        Wall.transform.Rotate(0, 0, 270);  
-                     }else if (levelMap[y-1, x]==4)
+                     }else if (levelMap[y-1, x]==4 && levelMap[y, x+1]==2 || levelMap[y-1, x]==3 && levelMap[y, x+1]==2)
                      {
                           Wall.transform.Rotate(0, 0, 90);
                      }
                      if(x<0 ){
-                         if (levelMap[y, x-1]==4)
+                         if (levelMap[y, x-1]==4 && levelMap[y+1, x]!=2 )
                      {
                           Wall.transform.Rotate(0, 0, 180);
                      }
