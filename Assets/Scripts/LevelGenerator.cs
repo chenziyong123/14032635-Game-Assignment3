@@ -627,7 +627,7 @@ public class LevelGenerator : MonoBehaviour
          Wall = (GameObject)Instantiate(transArray[wallsid], transform);
                     positionX = (originalX + x)  * Xdirection;
                     positionY = (originalY + y)  * -Ydirection;
-                    Wall.transform.position = new Vector3(positionX, positionY,0);
+                    Wall.transform.position = new Vector3(positionX, positionY,90);
                 
     }
     }

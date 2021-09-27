@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class PacmanManager : MonoBehaviour
 {
     public GameObject man;
     private Tweener tweener;
@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
         {
             a.SetInteger("Veritical",0);
             a.SetInteger("Hori",1);
-            tweener.AddTween(man.transform, man.transform.position,rightup, 3f);
+            tweener.AddTween(man.transform, man.transform.position,rightup, 2f);
            WalkAudio.Play();
            WalkAudio.loop = true;
         }
@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour
         {
             a.SetInteger("Hori",0);
             a.SetInteger("Veritical",-1);
-            tweener.AddTween(man.transform, man.transform.position, rightdown, 3f);
+            tweener.AddTween(man.transform, man.transform.position, rightdown, 2f);
             WalkAudio.Play();  
             WalkAudio.loop = true;
         }
@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
         {
             a.SetInteger("Veritical",0);
             a.SetInteger("Hori",-1);
-            tweener.AddTween(man.transform, man.transform.position, leftdown, 3f);
+            tweener.AddTween(man.transform, man.transform.position, leftdown, 2f);
             WalkAudio.Play();   
             WalkAudio.loop = true;
         }
@@ -55,7 +55,7 @@ public class InputManager : MonoBehaviour
         {
             a.SetInteger("Hori",0);
             a.SetInteger("Veritical",1);
-            tweener.AddTween(man.transform, man.transform.position,leftup, 3f);
+            tweener.AddTween(man.transform, man.transform.position,leftup, 2f);
             WalkAudio.Play();  
             WalkAudio.loop = true;   
         }
